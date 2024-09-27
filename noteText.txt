@@ -1,0 +1,34 @@
+1. in this project use install the Chainlink Brownie Contracts from github to use the all chainlink library
+--> forge install smartcontractkit/chainlink-brownie-contracts@1.2.0 --no-commit
+
+to check which file have the most tested (in %), need to check up to 100%;
+--> Code --> forge coverage --fork-url $SEPOLIA_RPC_URL
+or can only use forge coverage
+
+after create HelperConfig.s.sol we can test our code in the local without calling the API
+
+to check the solidity code dont need to go remix
+can use chisel to run the quick small code in the terminal
+
+type chisel in therminal and enter
+(Command + K) to clear
+(CTRL + C) to exit the chisel
+
+
+to check how much gas we gonna spend with function we made
+
+forge snapshot --match-test {function name} -> press enter -> its gonna create new file .gas-snapshot that have info about gas
+
+
+if we declare variable outside function or in the contract it gonna need or stored in storage to put the variable and cost gas
+
+if we declare variable as 'immutable' or 'constant' its not stored in storage or gas because its part of contract byte code
+
+if we declare variable inside the function then its not put into the storage and because
+- the variable inside function only deploy when function run, and delete when finished using function
+- if want to use the variable after run the function, use 'memory' in the variable so can use it to another function (place)
+
+and EVENT THE VARIABLE IS PRIVATE, ITS STILL CAN SEE BECAUSE IN BLOCKCHAIN EVERYTHING IS PUBLIC
+
+Makefile file is to make a command to run in the terminal so no need to type long, and auto verify progamaticly
+ex -> to deploy, we only need to write (make deploy-sepolia) -> and press enter its gonna execute the line that we code
